@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>测试链式作用域</title>
+		<script>
+			// "use strict";
+			
+			// 链式作用域  1->2
+			/**
+			 * 1.内部可以读取外部变量
+			 
+			var n1 = 999;
+			var f1 = function(){
+				alert(n1);
+			}
+			*/
+		   
+		   /**
+			* 2.外部不可以读取内部变量
+			
+		   var f2 = function(){
+			   var n2 = 999;
+		   }
+		   f2();
+		   alert(n2); // 报错 ReferenceError: n is not defined
+			*/
+		   
+		   /**
+			* 3.内部定义变量时要使用var,否则定义的就是全局变量(在非 strict模式下正确，在strict下出错)
+			
+		   var f3 = function(){
+			   n3 = 999;
+		   }
+		   f3(); // 这里要调用了才会正确，直接打印会出现，那是因为此时n还没有被定义过
+		   alert(n3);
+		   */
+		  
+		  /**
+		   * 4.闭包作用1：从外部读取内部数据
+		   
+		  function f4(){
+			  var n4 = 999;
+			  
+			  function f41(){
+				  console.log('我是f4中的function f41');
+				  alert(n4);
+			  } 
+			  
+			  return f41;
+		  }
+		  
+		  var result = f4();
+		  result();
+		  */
+		  
+		  /**
+		   * 闭包的定义:
+		   * 闭包是一个函数，它能够读取其他函数中定义的变量（根据作用域链，外部一般无法读取函数内部定义的变量）
+		   * 闭包通常表现为某个函数中的子函数
+		   */
+		  
+		  
+		  /**
+		   * 闭包最主要的作用有2个：
+		   * 1、读取函数内部的变量
+		   * 2、让这些变量保存在内存中
+		   
+		  function f5(){
+			  var n = 999;
+			  // 这里的nAdd由于没有使用var定义,此时会被定义为全局变量
+			  nAdd = function(){
+				  console.log('此处可以打印证明了nAdd是被定义为全局变量');
+				  n += 1;
+			  }
+			  function f51(){
+				  console.log('调用了f51');
+				  alert(n);
+			  }
+			  
+			  return f51;
+		  }
+		  
+		  var result = f5();
+		  console.log('此时f51还没被调用,即将调用f51');
+		  result();
+		  nAdd(); // 此处可以调用
+		  result();
+		  */
+		 
+		 
+		 /**
+		  * 闭包面试题
+		  */
+		 // 以下会输出5个6,如何改成输出 1,2,3,4,5
+		 for(var i=1;i<=5;i++){
+			setTimeout(function(){
+				console.log(i);
+			},1000)
+		 }
+		 // 答案 抖机灵,勿信以为真
+		 for(var i=i;i<=5;i++){
+			 console.log(i);
+		 }
+		 
+		 
+		 // 答案1
+		 for(var k=1;k<=5;k++){
+			(function(k){
+				 setTimeout(function(){
+				 	console.log('k=' + k);
+				 },1000);
+			})(k);
+		 }
+		 
+		 // 答案2
+		 for(let j=1;j<=5;j++){
+			 setTimeout(function(){
+				 console.log('j=' + j);
+			 },1000)
+		 }
+		 
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

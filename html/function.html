@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>测试function</title>
+		<script>
+			let Game = function test(){
+				function d(){
+					console.log('dddd');
+					this._init();
+				}
+				d.prototype.constructor = function(){
+					console.log('construtor');
+				}
+				d.prototype._init = function(){
+					console.log('init');
+				}
+				return d;
+			}();
+			
+			let catGame = new Game();
+			
+			function foo(){
+				console.log('foo');
+			}
+			window.foo();  // 输出 foo
+			
+			var bar = function(){
+				console.log('bar');
+			}
+			window.bar();  // 输出bar
+			/**
+			 * js中默认有一个window对象，不在任何函数体中定义的变量，默认会在全局作用域中。而全局作用域中的变量
+			 * 会绑定在window对象上。
+			 */
+			/**
+			 * var cat = '猫咪';
+			console.log(window.cat); // 输出 猫咪
+			 */
+			
+			/**
+			 * let cat = '猫咪';
+			console.log(window.cat); // 输出 undefined
+									// 由此可以证明，let可以防止变量提升
+			 */
+			
+			/**
+			 * 变量提升带来的后果就是可能会造成命名冲突，并且很难被发现。
+			 * 所以，为应对变量提升。就是把所有变量放到命名空间里
+			 */
+			
+			
+			
+		</script>
+	</head>
+	<body>
+		333
+	</body>
+</html>

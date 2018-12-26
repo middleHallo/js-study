@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>测试map集合</title>
+		<script>
+			
+			/**
+			 * 
+			 * 无效的写法，map只能初始化为空；
+			 * 或者是用一个二维数组初始化
+			let map = new Map([{
+					"name":"smlz",
+					"age":22,
+					"advatage":"php"
+				},
+				{
+					"name":"telnect",
+					"age":24,
+					"advatage":"javascript"
+				},
+				{
+					"name":"xh",
+					"age":20,
+					"advatage":"小程序"
+				}]
+			);
+			for(let idx of map){
+				console.log(idx);
+			}
+			**/
+			
+			
+			/**
+			 * 无效的写法，会报错
+			let map = new Map(['x','u','z']);
+			for(let x of map){
+				console.log(x);
+			}
+			*/
+		   
+		   
+		   /*
+		    * 正确的写法：只能使用二维数组初始化，或者初始化空map
+			* map的优点：极快的查找速度
+		   */
+		   let map = new Map([
+			   ['michael',98],
+			   ['bob',90],
+			   ['chen',84],
+			   ['hh',99],
+			   ['mrs',100]
+		   ]);
+		   
+		   map.set('bob',95);
+		   console.log(`'bob's 成绩为 ${map.get('bob')}`);
+				
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

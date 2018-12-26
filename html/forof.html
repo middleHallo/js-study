@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>for in和for of的区别</title>
+		<script>
+			window.onload = function(){
+				/***************测试for in 和 for of*****************/
+				/**
+				 * for in 和 for of的区别
+				 * 例如一个数组 arr = ['a','b','c','d'];
+				 * 此时，给arr的其他属性赋值，例如 arr.name = 'test';
+				 * for in循环的时候，循环5次，但是arr.length = 4
+				 * for of解决了这个问题，并且for in循环拿到是下标，或者属性值，而 for of拿到的
+				 * 却是整体的值。
+				 */
+				let a = ['a','b','c','d'];
+				a.name = 'smlz';
+				for(let x in a){
+					console.log(x);
+				}
+				
+				console.log(a.length);
+				console.log('==========================');
+				
+				for(let x of a){
+					console.log(x);
+				}
+				
+				console.log(a);
+			}
+		</script>
+	</head>
+	<body>
+		<a href="../img/1.jpg;" download="w3logo" >下载图片</a>
+		<a href="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1380400117,1753524827&fm=27&gp=0.jpg" download="">下载2</a>
+	</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>测试js中的基本数据类型和引用数据类型</title>
+		<script>
+			
+			window.onload = function(){
+				var btn1 = document.getElementById("btn1");
+				btn1.onclick = function(){
+					var base1 = 1;
+					var base2 = base1;
+					base2 = 3;
+					console.log("base1=" + base1);
+					console.log("base2=" + base2);
+				}
+				
+				var btn11 = document.getElementById("btn11");
+				btn11.onclick = function(){
+					var is1 = true;
+					var is2 = is1;
+					is2 = false;
+					console.log("is1===" + is1);
+					console.log("is2===" + is2);
+				}
+				
+				var btn22 = document.getElementById("btn22");
+				btn22.onclick = function(){
+					var str1 = "hello,i am grud";
+					var str2 = str1;
+					str2 = "hello, i am not grud";
+					console.log("str1===" + str1);
+					console.log("str2===" + str2);
+				}
+				
+				var btn2 = document.getElementById("btn2");
+				btn2.onclick = function(){
+					var arr1 = [1,2,3,4];
+					var arr2 = arr1;
+					arr2.pop();
+					console.log("arr1====");
+					console.log(arr1);
+					
+					console.log("arr2====");
+					console.log(arr2);
+				}
+				
+				var btn3 = document.getElementById("btn3");
+				btn3.onclick = function(){
+					var obj1 = {
+						name:'jeny',
+						age:22
+					}
+					
+					var obj2 = obj1;
+					obj2.name = 'bob';
+					obj2.age=33;
+					console.log("obj1====");
+					console.log(obj1);
+					
+					console.log("obj2====");
+					console.log(obj2);
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+		<h3>结论：</h3>
+		<p>有基本数据类型base1，然后用base2 = base1的方式给base2赋值，base2改变时不影响base1的值</p>
+		<p>有引用数据类型obj1 ，然后用obj2 = obj1的方式给obj2赋值，obj2改变时影响obj1的值</p>
+		<p>注：基本数据类型有  number boolean  string ；引用数据类型有 array  object</p>
+		<hr />
+		<pre>
+测试基本数据类型
+var base1 = 1;
+var base2 = base1;
+
+base2 = 3;
+console.log("base1=" + base1);
+console.log("base2=" + base2);
+
+=============
+打印结果：
+base1 = 1;
+base3 = 3;
+		</pre>
+		<button type="button" id="btn1">点击测试基本数据类型1</button>
+		
+		<hr />
+		<pre>
+var is1 = true;
+var is2 = is1;
+is2 = false;
+console.log("is1===" + is1);
+console.log("is2===" + is2);
+======
+打印结果：
+is1===true
+is2===false
+		</pre>
+		<button type="button" id="btn11">点击测试基本数据类型2</button>
+		<hr />
+		<pre>
+var str1 = "hello,i am grud";
+var str2 = str1;
+str2 = "hello, i am not grud";
+console.log("str1===" + str1);
+console.log("str2===" + str2);
+======
+打印结果：
+str1===hello,i am grud
+str2===hello, i am not grud
+				</pre>
+		<button type="button" id="btn22">点击测试基本数据类型3</button>
+		<hr />
+		<pre>
+测试引用数据类型1
+var arr1 = [1,2,3,4];
+var arr2 = arr1;
+arr2.pop();
+console.log("arr1====");
+console.log(arr1);
+
+console.log("arr2====");
+console.log(arr2);
+============
+打印结果：
+arr1===
+[1,2,3]
+arr2===
+[1,2,3]
+		</pre>
+		<button type="button" id="btn2">点击测试引用数据类型1</button>
+		<hr />
+		
+		<pre>
+var obj1 = {
+	name:'jeny',
+	age:22
+}
+
+var obj2 = obj1;
+obj2.name = 'bob';
+obj2.age=33;
+console.log("obj1====");
+console.log(obj1);
+
+console.log("obj2====");
+console.log(obj2);
+========
+打印结果：
+obj1====
+{name: "bob", age: 33}
+obj2====
+{name: "bob", age: 33}
+		</pre>
+		<button type="button" id="btn3">点击测试引用数据类型2</button>
+	</body>
+</html>

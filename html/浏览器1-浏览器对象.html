@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>浏览器对象</title>
+		<script>
+			"use strict";
+			// 1.window对象
+			let innerWidth = window.innerWidth;
+			let innerHeight = window.innerHeight;
+			let outerWidth = window.outerWidth;
+			let outerHeight = window.outerHeight;
+			console.log(`window inner size : ${innerWidth} x ${innerHeight}`);
+			console.log(`window outer size : ${outerWidth} x ${outerHeight}`);
+			console.log('==============================');
+			
+			// 2.navagator对象(单独的一个对象，不属于window)
+			console.log(navigator === window.navigation);// false
+			console.log(`appName = ${navigator.appName}`);
+			console.log(`appVersion = ${navigator.appVersion}`);
+			console.log(`language = ${navigator.language}`);
+			console.log(`platform = ${navigator.platform}`);
+			console.log(`userAgent = ${navigator.userAgent}`);
+			
+			// 因为navigator的信息很容易被用户修改,所以在判别浏览器的情况下,应该充分利用
+			// JavaScript对不存在的属性返回undefined的特性,直接利用||运算符计算,这样准确而且容易维护
+			var width = window.innerWidth || document.body.clientWidth;
+			
+			console.log(width);
+			
+			console.log('==============================');
+			// 3.screen(window的属性,同时也是对象) 屏幕宽度
+			console.log(screen === window.screen);
+			console.log(`screen size : ${window.screen.width} x ${window.screen.height}`);
+			console.log(`screen size : ${screen.width} x ${screen.height}`);
+			console.log(`screen.colorDepth = ${screen.colorDepth}`); // 颜色位数
+			
+			console.log('==============================');
+			
+			// 4.location 表示当前页面的URL信息
+			console.log(location === window.location); // 也是window中的属性,也是个对象
+			console.log(`protocol: ${location.protocol}`);
+			console.log(`host: ${location.host}`);
+			console.log(`port: ${location.port}`);
+			console.log(`parthname: ${location.parthname}`);
+			console.log(`search: ${location.search}`); // 参数部分 也就是?a=1&b=2这部分
+			console.log(`hase: ${location.hase}`); // hash部分,也就是#top这种
+			// 此外,location还有2个方法,reload()和assign()  reload重载当前页面,assign()加载新页面
+			// locatio.href = ''; 相当于location.assign()
+			// location.replace();
+			console.log('==============================');
+			
+			// 5.document对象
+			console.log(document === window.document); // 同样是window的属性
+			
+			// document.title
+			document.title = '我被改变啦，救命啊';
+			document.cookie = 'name=小明';
+			
+			console.log(document.cookie); // 读取所有的cookie信息
+			// 另外,服务端在设置cookie时应该使用httpOnly,可以防止cookie在客户端中被js脚本读取
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

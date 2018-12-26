@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>测试js中的对象类型</title>
+		<script>
+			window.onload = function(){
+				
+				var btn1 = document.getElementById("btn1");
+				btn1.onclick = function(){
+					var obj1 = new Object();
+					obj1.name = 'bob';
+					obj1.age = 20;
+					
+					var obj2 = {
+						name:'tom',
+						age:22
+					}
+					
+					console.log("obj1====");
+					console.log(obj1);
+					
+					console.log("======");
+					console.log("obj2====");
+					console.log(obj2);
+				}
+				
+				var btn2 = document.getElementById("btn2");
+				btn2.onclick = function(){
+					var obj1 = new Object();
+					obj1.name = 'bob';
+					obj1.age = 20;
+					
+					var obj2 = {
+						name:'tom',
+						age:22
+					}
+					
+					console.log("obj1.name====" + obj1.name);
+					console.log("obj2.name1====" + obj2["name"]);
+					var propertyName = "name";
+					console.log("obj2.name2====" + obj2[propertyName]);
+					
+					obj1["name"] = 'cindy';
+					obj2[propertyName] = 'coco';
+					
+					console.log("obj1.name====" + obj1["name"]);
+					console.log("obj2.name====" + obj2[propertyName]);
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<button type="button" id="btn1">2种不同的方式创建对象</button>
+		<button type="button" id="btn2">2种不同的方式读写对象</button>
+	</body>
+</html>

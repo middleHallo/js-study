@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>高阶函数</title>
+		<script>
+			'use strict';
+			// 高阶函数: 1个函数能接收另一个函数作为参数,这种函数就称之为高阶函数
+			// 案例1
+			/*
+			function add(x,y,f){
+				console.log(arguments);
+				console.log(f(x) + f(y)) ;
+			}
+			
+			add(-5,7,Math.abs);
+			*/
+		   
+		   // Array.map()和Array.reduce()  2个方法都接收1个函数作为参数
+		   // 其中, map()方法是对数组的每一项进行特殊处理,返回的也是个数组
+		   // reduce()则是将前2项按照传进来的函数处理,并将结果和下一项进行同样的处理,返回最后一项
+		   
+		   // 求x^2 或者 x^3
+		   var arr = [1,2,3,4];
+		   var res = arr.map(function(x){
+			   console.log(x*x*x);
+			   return x*x*x;
+		   })
+		   console.log(res);
+		   
+		   // 求和
+		   var result = arr.reduce(function(x,y){
+			   console.log(x+y);
+			   return x+y;
+		   })
+		   console.log(result);
+		   
+		   // 案例3
+		   var arr2 = ['1','2','3'];
+		   var r;
+		   r = arr2.map(parseInt);
+		   console.log(r); // 输出 1,NaN,NaN
+		   // 原因分析
+		   // map()接收的回调函数有3个参数,分别是 currentValue,index,Array
+		   // 而parseInt(string, radix)接收的是2个参数,radix为多少进制.不传时为0,也就是10进制
+		   // 当parseInt('2',1)时,没有1进制,所以是NaN
+		   // 当parseInt('3',2)时,2进制不允许出现3,所以是NaN
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

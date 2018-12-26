@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>class继承</title>
+		<script>
+			"use strict";
+			
+			// 用class关键字来实现类
+			class Student{
+				constructor(name){
+					this.name = name;
+				}
+				
+				hello(){
+					console.log(`Hello, ${this.name}!`);
+				}
+			}
+			
+			var xiaohong = new Student('小红');
+			xiaohong.hello();
+			
+			class GsStudent extends Student{
+				constructor(name,grade){
+					super(name);
+					this.grade = grade || 60;
+				}
+				
+				play(ball){
+					let mygrade = this.getGrade();
+					console.log(`路人甲:${this.name},我们来打${ball}吧!`);
+					console.log(`${this.name}:不,我上次成绩为:${mygrade},我要努力学习!`)
+				}
+				
+				getGrade(){
+					return this.grade;
+				}
+			}
+			
+			var xiaoming = new GsStudent('小明',70);
+			xiaoming.play('篮球');
+			console.log('小明的成绩为：' + xiaoming.getGrade());
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

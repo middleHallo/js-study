@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>包装对象</title>
+		<script>
+			// 在js中,一切皆是对象.只是对象有所不同,为了区分对象的类型,用typeof 获取
+			/*
+			基本数据类型 ： number/string/boolean/undefined/function 
+			引用数据类型 ： object
+			console.log(typeof 123); // number
+			console.log(typeof NaN);  // number
+			console.log(typeof 'str');  // string
+			console.log(typeof true);  // boolean
+			console.log(typeof undefined);  // undefined
+			console.log(typeof 'undefined');  // string
+			console.log(typeof Math.abs);  // function
+			console.log(typeof null);  // object
+			console.log(typeof [1,2,3]);  // object
+			console.log(typeof {name:'小红'});  //object
+			*/
+		   
+		   // 包装对象
+		   console.log(typeof new Number(123)); // object
+		   console.log(new Number(123) === 123); // false
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

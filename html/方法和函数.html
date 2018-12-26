@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>方法和函数的区别</title>
+		<script>
+			// 函数: 通过名字进行调用
+			// 方法: 通过对象调用的javascript函数,是比较特殊的函数
+			
+			"use strict";
+			
+			// this始终指向调用它的那个对象
+			/*
+			// 案例1: age方法中，this指向的是 xiaoming
+			var xiaoming = {
+				name:'小明',
+				birthYear:1990,
+				age:function(){
+					var y = new Date().getFullYear();
+					return y - this.birthYear;
+				}
+			}
+			console.log(xiaoming.age());
+			*/
+			
+			// 案例2: getAge 函数中的this要看怎么调用,xiaoming.age()调用指向小明,
+			// getAge()指向的是undefied(在非strict中指向的是window)
+			/*
+			function getAge(){
+				var y = new Date().getFullYear();
+				return y - this.birthYear;
+			}
+			
+			var xiaoming = {
+				name:'小明',
+				birthYear:1990,
+				age:getAge
+			};
+			
+			console.log(xiaoming.age());
+			var fn = xiaoming.age; // 在非strict模式下输出NaN,在strict模式下会报错,因为this是undefied
+			console.log(fn());  // 
+			*/
+		   
+			// 案例3 利用apply或者call,可以控制this指向
+			// apply和call的第一个参数,接收的是this要指向的对象
+			// apply和call区别是,apply要把其他参数打包成array传递,call需要将参数1个个按顺序传递
+			/*
+			function getAge(){
+				var y = new Date().getFullYear();
+				return y - this.birthYear;
+			}
+			
+			var xiaoming = {
+				name:'',
+				birthYear:1990,
+				age:getAge
+			};
+			
+			console.log(xiaoming.age());
+			console.log(getAge.apply(xiaoming,[]));
+			console.log(getAge.call(xiaoming));
+			*/
+		   
+		   // 案例4 利用apply(),还可以动态改变函数的行为
+		   // 示例: 统计使用了多少次parseInt()
+		   var count = 0;
+		   var oldParseInt = parseInt; // 保存原函数
+		   
+		   window.parseInt = function(){
+			   count += 1;
+			   return oldParseInt.apply(window,arguments); // 调用原函数
+		   }
+		   
+		   parseInt('10');
+		   parseInt('20');
+		   parseInt('30');
+		   console.log('count=' + count);
+		   
+		</script>
+		
+	</head>
+	<body>
+	</body>
+</html>

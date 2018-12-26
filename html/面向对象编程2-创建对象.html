@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>创建对象</title>
+		<script>
+			function Student(name){
+				this.name = name;
+// 				this.hello = function(){
+// 					alert(`Hello,${this.name} !`);
+// 				}
+			}
+			
+			Student.prototype.hello = function(){
+				alert(`Hello,${this.name} !`);
+			}
+			var xiaoming = new Student('小明');
+			console.log(xiaoming.name);
+			
+			var xiaohong = new Student('小红');
+			
+			console.log('是否相等' );
+			console.log(xiaoming.hello === xiaohong.hello);
+			console.log('===========');
+			xiaoming.hello();
+			xiaohong.hello();
+			console.log(Student.prototype);
+			console.log(xiaoming.__proto__ === xiaohong.__proto__);//true
+			
+			
+			// 对象xiaoming 的原型是__proto__,它的原型对象是 Student.prototype
+			console.log(xiaoming.__proto__ === Student.prototype);//true
+			
+			console.log(Student.prototype.constructor === Student);// true
+			
+			console.log(xiaoming.constructor === Student.prototype.constructor);// true
+			
+			console.log(Student.prototype.constructor === Student); // true
+			
+			
+			function Teacher(props){
+				this.name = props.name || '匿名';
+				this.grade = props.grade || 1;
+			}
+			
+			Teacher.prototype.hello = function(){
+				alert(`Hello, ${this.name} !`);
+			}
+			
+			Teacher.prototype.say = function(){
+				console.log(`${this.name} 正在叨叨个不停.`);
+			}
+			
+			function createTeacher(props){
+				return new Teacher(props || {});
+			}
+			
+			var hls = createTeacher({
+				name:'黄老师'
+			});
+			
+			console.log(hls.name);
+			hls.hello();
+			hls.say();
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

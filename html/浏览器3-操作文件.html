@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>操作文件</title>
+	</head>
+	<body>
+		<input type="file" id="test-file-upload" accept="image/*" />
+		<div id="test-file-info"></div>
+		<script>
+			var f = document.getElementById('test-file-upload'),
+			    info = document.getElementById('test-file-info');
+			// 监听change事件
+			f.addEventListener('change',function(){
+				if(!f.value){
+					info.innerHTML = '没有选择文件';
+					return
+				}
+				
+				var file = f.files[0];
+				info.innerHTML = `文件: ${file.name} <br />,
+								  大小: ${file.size} <br />,
+								  修改: ${file.lastModifiedDate}`;
+				if(file.type !== 'image/jpeg' && file.type !== 'image/png'  && file.type !== 'image/gif'){
+					alert('不是图片');
+					return
+				}
+				var reader = new FileReader();
+				reader.onload = function(e){
+					console.log(e.target.result);
+				}
+				
+				reader.readAsDataURL(file);
+			})
+			
+		</script>
+	</body>
+</html>
