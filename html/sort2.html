@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>sort实战</title>
+		<script>
+			var rankData = [
+				{
+					"openid":"1111",
+					"nickname":"后米米米米",
+					"avatarUrl":"https://wx.qlogo.cn/mmopen/vi_32/aNUSJkYYUeEibuIiauOV1BmUpmTibET2r2oHhN9sF3Oazic4a3lmuiaPVdfvlSUwR0HOwm3Ca3laQMsViaTZdwrv2x6Q/132",
+					"KVDataList":[
+						{"key":"dogName","value":"比格猎犬"},
+						{"key":"level","value":"8"},
+						{"key":"coin_num","value":"24122"},
+						{"key":"coin_str","value":"24.12k"},
+					]
+				},
+				{
+					"openid":"2222",
+					"nickname":"愚也愉",
+					"avatarUrl":"https://wx.qlogo.cn/mmopen/vi_32/aNUSJkYYUeEibuIiauOV1BmUpmTibET2r2oHhN9sF3Oazic4a3lmuiaPVdfvlSUwR0HOwm3Ca3laQMsViaTZdwrv2x6Q/132",
+					"KVDataList":[
+						{"key":"dogName","value":"松狮犬"},
+						{"key":"level","value":"5"},
+						{"key":"coin_num","value":"2500"},
+						{"key":"coin_str","value":"2.5k"},
+					]
+				},
+				{
+					"openid":"333",
+					"nickname":"肖家平",
+					"avatarUrl":"https://wx.qlogo.cn/mmopen/vi_32/aNUSJkYYUeEibuIiauOV1BmUpmTibET2r2oHhN9sF3Oazic4a3lmuiaPVdfvlSUwR0HOwm3Ca3laQMsViaTZdwrv2x6Q/132",
+					"KVDataList":[
+						{"key":"dogName","value":"卷毛比熊犬"},
+						{"key":"level","value":"33"},
+						{"key":"coin_num","value":"2500"},
+						{"key":"coin_str","value":"2.5k"},
+					]
+				},
+				{
+					"openid":"333",
+					"nickname":"追梦赤子心",
+					"avatarUrl":"https://wx.qlogo.cn/mmopen/vi_32/aNUSJkYYUeEibuIiauOV1BmUpmTibET2r2oHhN9sF3Oazic4a3lmuiaPVdfvlSUwR0HOwm3Ca3laQMsViaTZdwrv2x6Q/132",
+					"KVDataList":[
+						{"key":"dogName","value":"柴犬"},
+						{"key":"level","value":"2"},
+						{"key":"coin_num","value":"2500"},
+						{"key":"coin_str","value":"2.5k"},
+					]
+				},
+				{
+					"openid":"333",
+					"nickname":"放牛班学习委",
+					"avatarUrl":"https://wx.qlogo.cn/mmopen/vi_32/aNUSJkYYUeEibuIiauOV1BmUpmTibET2r2oHhN9sF3Oazic4a3lmuiaPVdfvlSUwR0HOwm3Ca3laQMsViaTZdwrv2x6Q/132",
+					"KVDataList":[
+						{"key":"dogName","value":"英国斗牛犬"},
+						{"key":"level","value":"4"},
+						{"key":"coin_num","value":"2500"},
+						{"key":"coin_str","value":"2.5k"},
+					]
+				}
+			]
+			
+		 rankData.sort(function(element1,element2){
+				let kvdata1 = element1.KVDataList;
+				let kvdata2 = element2.KVDataList;
+				let kvdata1Level = parseInt(kvdata1[1].value);
+				let kvdata2Level = parseInt(kvdata2[1].value);
+				if (kvdata1Level > kvdata2Level){
+					return -1;
+				} else if (kvdata1Level < kvdata2Level){
+					return 1;
+				}else{
+					var coin_num1 = kvdata1[2].value + "";
+					var coin_num2 = kvdata2[2].value + "";
+					if (coin_num1.length > 16 || coin_num2.length > 16){
+						return 0;
+					}
+					if (coin_num1.length > coin_num2.length){
+						return -1;
+					} else if (coin_num1.length < coin_num2.length){
+						return 1;
+					}else{
+						return (parseInt(coin_num1) > parseInt(coin_num2))?-1:1;
+					}
+				}
+			});
+			console.log(rankData);
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>CSS过渡</title>
+		<style>
+			.myImg{
+				opacity: 1;
+				transition: opacity 1s ease-in;
+			}
+			.myImg:hover{
+				opacity:0.4;
+			}
+			
+			.myDiv{
+				margin-left: 20px;
+				width: 100px;
+				height: 100px;
+				background-color: aquamarine;
+				transition: width 1s ease-in,
+							height 1s ease-in,
+							background-color 1s ease-in,
+							margin-left 1s ease-in;
+			}
+			.myDiv:hover{
+				width: 200px;
+				height: 200px;
+				background-color: chocolate;
+				margin-left: 40px;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="../img/222.jpg" class="myImg" />
+		<div class="myDiv"></div>
+	</body>
+</html>

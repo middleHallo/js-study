@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>面试题</title>
+		<script>
+			var setPerson=function(person){
+				person.name='kevin';
+				person={name:'rick'}; // 这里是重新定义了persion变量
+				console.log(person)
+			}
+
+			var person={name:'alan'};
+			setPerson(person);
+			alert(person.name); // kevin
+			
+			console.log('=========');
+			
+			for(var i={j:0};i.j<5;i.j++){
+				(function(i){
+					setTimeout(function(){
+						console.log(i.j)
+					},0)
+				})(JSON.parse(JSON.stringify(i)))
+			}
+			
+			
+			console.log('==========');
+			var a=2018<0 ||typeof(2018+'');
+			console.log(a);
+			
+			/**
+			 * http://p.biketo.com/ajax/filterList?cate_id=0&brand_id=0&low=0&high=0&niche=&material=&transmission=&wheel_diameter=&tags_id=&page=1&sort=hot&sort_up=1
+			 */
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

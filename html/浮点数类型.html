@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>测试浮点数</title>
+	</head>
+	<script>
+		// 浮点型 正确的使用方法
+		console.log(0.1 + 0.2 === 0.3); // false
+		console.log((0.1 + 0.2 - 0.3) <= Number.EPSILON); // true
+		console.log(0.7 + 0.6 === 1.3); // false
+		console.log((0.7 + 0.6 - 1.3) <= Number.EPSILON); // true
+		
+		let obj = {
+			a:1
+		}
+		obj.b = 1;
+		console.log(obj);
+		console.log(Object.getOwnPropertyDescriptor(obj,"a"));
+		
+		let obj2 = {
+			a:1,
+			get e(){
+				console.log('调用了访问器属性 getter方法');
+				return 1;
+			}
+			
+// 			set e(){
+// 				console.log('调用了访问器属性 setter方法');
+// 				
+// 			}
+		}
+		Object.defineProperty(obj2,"b",{
+			value:2,
+			writable:false,
+			enumerable:false,
+			configurable:false
+		})
+		Object.defineProperty(obj2,"c",{
+			value:3,
+			writable:true,
+			enumerable:false,
+			configurable:true
+		})
+		
+		console.log(Object.getOwnPropertyDescriptor(obj2,"a"));
+		console.log(Object.getOwnPropertyDescriptor(obj2,"b"));
+		console.log(Object.getOwnPropertyDescriptor(obj2,"c"));
+		
+		obj2.b = 3;
+		console.log(obj2.b); // 2 因为obj2.b的wriable为false
+		console.log(obj2.e);
+		obj2.e = 1;
+		
+		var obj3 = {
+			valueOf:()=>{
+				console.log('valueof');
+				return {}
+			},
+			toString:()=>{
+				console.log('toString');
+				return {}
+			}
+		}
+		
+// 		obj3[Symbol.toPrimitive] = ()=>{
+// 			console.log('toPrimitive');
+// 			return "2";
+// 		}
+		// console.log(obj3 * 2); // 先valueOf 后 toString
+		// console.log(obj3 + "");// 先valueOf 后 toString
+		//console.log(String(obj3));// 先toString 后valueOf
+		
+		
+	</script>
+	<body>
+		
+	</body>
+</html>

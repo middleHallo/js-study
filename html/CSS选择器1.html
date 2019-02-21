@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>CSS选择器之层次选择器</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				width: 300px;
+				margin: 0 auto;
+			}
+			div{
+				margin: 5px;
+				padding: 5px;
+				border: 1px solid #ccc;
+			}
+			/* (E F)后代选择器，选中所有后代元素 */
+			div div{
+				background-color: orange;
+			}
+			
+			/* (E > F)子代选择器，仅选中后代元素中的直接子元素 */
+			body > div{
+				background-color: green;
+			}
+			
+			/* (E + F)相邻选择器，仅选中该元素的相邻的元素(往后选择，前面的不会被选中)*/
+			.active + div{
+				background-color: lime;
+			}
+			.active ~ div{
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="active">1</div>
+		<div>2</div>
+		<div>3</div>
+		<div>4
+			<div>5</div>
+			<div>6</div>
+		</div>
+		<div>7
+			<div>8
+				<div>9
+					<div>10</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

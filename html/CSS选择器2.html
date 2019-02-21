@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>CSS选择器之动态伪类选择器</title>
+		<script>
+			function gettype(nm){
+				return Object.prototype.toString.call(nm);
+			}
+			
+			var a = 3;
+			console.log(gettype(a));
+			
+			var b = 'ddd';
+			console.log(gettype(b));
+			
+			var c = true;
+			console.log(gettype(c));
+			
+			var d;
+			console.log(gettype(d));
+			
+			var e = null;
+			console.log(gettype(e));
+			
+			var f = Symbol('aaa');
+			console.log(gettype(f));
+			
+			var h = {};
+			console.log(gettype(h));
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>canvas</title>
+		<script src="../js/jquery-3.3.1.min.js"></script>
+		<script>
+			"use strict";
+			// $(document).on('ready',function(){})
+			// 简化为  $(document).ready(function(){})
+			// 再简化为 $(function(){})
+			$(document).ready(function(){
+				
+				var cavas = document.getElementById('test-stock');
+				if(cavas.getContext){
+					console.log('你的浏览器支持canvas');
+				}else{
+					console.log('你的浏览器不支持canvas')
+				}
+			})
+		</script>
+	</head>
+	<body>
+		<canvas id="test-stock" width="300" height="200">
+			<p>你的浏览器不支持Cavas，请将浏览器升级到最新版本。</p>
+		</canvas>
+	</body>
+</html>

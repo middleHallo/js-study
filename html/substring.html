@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>测试substring</title>
+		<script>
+			var name = 'Linda.solph';
+			
+			// 第1种情况  当只有1个参数时,表示从该位开始截取,直到字符串末尾
+			// 1-1 当传入的下标小于字符串的长度-1,则传回正常的字符串
+			var str1 = name.substring(3);
+			console.log(name); // 原字符串不变
+			console.log(str1);
+			
+			// 1-2 当传入的下标 大于等于 字符串的长度,传回空字符串 ''
+			var str2 = name.substring(22);
+			console.log(str2 === '');  // 空字符串 ''
+			
+			// 第2种情况  当有2个参数时,表示截取2个参数下标之间的字符串(没有顺序)
+			// 2-1 正常情况,第2个参数大于第1个参数
+			var str3 = name.substring(2,4); // 也就是这样的 [a,b) 的操作
+			console.log(str3); // 输出 : nd
+			
+			// 2-2 第1个参数大于第2个参数
+			var str4 = name.substring(4,1);
+			console.log(str4); // 输出ind 
+			
+			// 2-3 有个参数大于数组长度,则取从1之后的所有字符
+			var str5 = name.substring(1,20);
+			console.log(str5); // inda.solph
+			console.log(str5.length); // 10
+			
+			// 2-4 
+			var str6 = name.substring(20,1);
+			console.log(str6);  // inda.solph
+			console.log(str6.length); // 10
+			
+			// 2-5 参数中有负数
+			var str7 = name.substring(-1,2);
+			console.log(str7);  // Li
+			console.log(str7.length); // 2
+			
+			// 2-6 
+			var str8 = name.substring(2,-1);
+			console.log(str8); // Li
+			console.log(str8.length); // 2
+			
+			// 2-7
+			var str9  = name.substring(-2);
+			console.log(str9); // Linda.solph
+			console.log(str9.length); // 11
+			
+			
+			// 结论:
+			// 如果只有1个参数,则以那个参数作为下标,截取从那个参数开始,到字符串末尾的字符串返回.
+			// 如果该参数为负数,则从0开始
+			// 如果该参数大于等于数组的长度,则返回 '' 字符串
+			
+			// 如果有2个参数(a,b),其中 a < b,(a,b中有负数,则会被重置为0),则返回2个参数间的字符串.[a,b)
+			// 如果 a > b 则返回2个参数间的字符串[b,a)
+			// 超出字符串长度的部分不起作用
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

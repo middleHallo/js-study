@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>测试substr</title>
+		<script>
+			var name = 'Linda.solph';
+			
+			var str1 = name.substr(2);
+			console.log(str1); // nda.solph
+			
+			var str2 = name.substr(-3);
+			console.log(`str2=== ${str2}`); // 输出lph
+			
+			var str22 = name.substring(-3);
+			console.log(`str22=== ${str22}`); // Linda.solph
+			
+			var str3 = name.substr(20,3); 
+			console.log(str3 === ''); // true
+			console.log(str3.length);// 输出 '' 字符串
+			
+			var str4 = name.substr(4,4);
+			console.log(str4);
+			
+			var str44 = name.substring(4,4);
+			console.log(str44 === ''); // true ,即str44 = ''
+			
+			var str5 = name.substr(-2,3);
+			console.log(str5); // ph
+			
+			var str6 = name.substr(4,-2);
+			console.log(str6 === ''); // true ,即 str6 = ''
+			
+			var str7 = name.substr(-11,3);
+			console.log(str7);
+			
+			// 大于等于11(name.length),则返回''
+			var str8 = name.substr(11,3);
+			console.log(str8 === ''); // true
+			
+			// 结论: substrb(a,b); 有2个参数,第1个是必填的,第2个是可选的.
+			// 第1个表示从下标哪开始,如果是正数,则表示从左向右数多少个下标,如果下标大于等于字符串长度,返回''
+			// 如果是负数,则表示从右向左多少个下标. 如果负数的绝对值大于等于字符串长度,则返回''
+			 
+			// 第2个参数,则表示截取多少个字符串,如果为负数,则返回''
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

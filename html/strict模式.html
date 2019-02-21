@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>测试strict模式下</title>
+		<script>
+			"use strict";
+			
+			// 严格模式下,定义变量需用var,否则会报错
+// 			abc = 'hello world';
+// 			console.log(abc);
+
+			var name = '小明',age=20;
+			var message = `你好,${name},你今年${age}岁了`;
+			console.log(message);
+			// 字符串是只读的
+			// 长度
+			console.log(message.length);
+			// 索引取值
+			console.log(message[1]);
+			
+			/* 改变字符串的值会报错
+			message[1] = 'H';
+			console.log(message);
+			*/
+		   
+		   // 以下方法会返回一个新的字符串
+		   var enName = 'jims';
+		   var newEnName = enName.toUpperCase();
+		   console.log(enName);  // 输出：jims,说明,toUpperCase()没有改变该字符串
+		   console.log(newEnName);  // 输出: JIMS 这个是新的字符串
+		   
+		   var upperName = 'MotLn';
+		   var newUpperName = upperName.toLowerCase();
+		   console.log(upperName);   // 输出MotLn,说明toLowerCase()没有改变该字符串
+		   console.log(newUpperName); // 输出: motln ,这是个新的字符串
+		   
+		   // 此外,还有个toLocaleUpperCase()和toLocaleLowserCase();
+		   // 主要是为了兼容少数大小写转换和Unicode转换不一样的语言,例如土耳其
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
