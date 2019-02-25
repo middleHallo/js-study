@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>this指向问题</title>
+		<script>
+			// 在web页面的全局作用域中，this === window
+			var a = 100;
+			console.log('a==' + a);
+			this.a = 200;
+			console.log('this.a==' + a);
+			window.a = 300;
+			console.log('window.a ==' + a);
+			console.log(this === window);
+			// 分割线
+			console.log('=================================');
+			var name = '阿丽塔';
+			var obj = {
+				name:'千颂伊思密达',
+				friends:['都敏俊西','狗子'],
+				loop:function () {
+					this.friends.map(function(){
+						console.log('this.name==' + this.name);
+					})
+					this.friends.forEach(function(friend){
+						console.log(this.name);
+					})
+				}
+			}
+			obj.loop(); // 输出是 阿丽塔!!!
+			console.log('==========================');
+			
+			var color = 'red';
+			var o = {
+				color:'orange',
+			}
+			function sayColor(){
+				console.log('this.color==' + this.color);
+			}
+			sayColor();
+// 			sayColor.call(this);
+// 			sayColor.call(window);
+			sayColor.call(o);
+			
+			console.log('====================');
+			
+			if (false) {
+			  var x = 'hello';
+			}
+
+			for (var i = 0; i < 10; i++) {
+			  console.log(i);
+			}
+			console.log('x===' + window.x);
+			console.log('i===' + window.i);
+			console.log('=================');
+			let arr = [3,2,3,1];
+			let itemCopy = [...arr];
+			console.log(itemCopy);
+			itemCopy[0] = 1;
+			console.log(itemCopy);
+			console.log(arr);
+			console.log('===================');
+			// console.log(1.toString()); // 报错，因为这里的.被当做了浮点符号，而后面的toString()是非法字符。
+			let n = 2;
+			console.log(n.toString());
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
