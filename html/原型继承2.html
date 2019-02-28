@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>原型继承2（早期版本）</title>
+		<script>
+			function c1(){
+				this.p1 = 1;
+				this.p2 = function(){
+					console.log('ummm');
+					console.log(this.p1);
+				}
+			}
+			c1.p3 = 3;
+			var o1 = new c1();
+			o1.p2();
+			console.log(o1.p3);
+			console.log(o1);
+			function c2(){
+				
+			}
+			c2.prototype.p1 = 2;
+			c2.prototype.p2 = function(){
+				console.log('hhhh');
+				console.log(this.p1);
+			}
+			var o2 = new c2();
+			o2.p2();
+			console.log(o2);
+			
+			String.prototype.p2 = function(){
+				console.log('我是String类中的P2');
+			}
+			var str = new String('abc');
+			str.p2();
+			
+			console.log(Object.getPrototypeOf(o2));
+			
+			// console.log()
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

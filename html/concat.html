@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>查看concat</title>
+		<script>
+			let arr = [];
+			let arr1 = [1,2,3];
+			let arr2 = [4,5];
+			
+			let newArr1 = arr.concat(arr1);
+			console.log(newArr1);
+			
+			let newArr2 = arr.concat(arr2);
+			
+			
+			
+			setTimeout(function(){
+				newArr1[0] = 0;
+				console.log(newArr1);
+				console.log(arr1);
+				
+				newArr2[0] = 1;
+				console.log(arr2);
+				console.log(newArr2)
+				console.log(arr);
+				
+			},300)
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

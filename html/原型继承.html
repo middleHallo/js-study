@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>原型继承</title>
+		<script>
+			
+			var cat = {
+				say(){
+					console.log('miao');
+				},
+				eat(){
+					console.log('喵粮');
+				}
+			}
+			
+			var tiger = {
+				drump(){
+					console.log('drump');
+				}
+			}
+			Object.setPrototypeOf(tiger,cat);
+			
+			// 执行原型创建对应的
+// 			var tiger = Object.create(cat,{
+// 				color(){
+// 					console.log('略略略');
+// 				}
+// 			});
+			tiger.say();
+			tiger.drump = function(){
+				console.log('drump');
+			}
+			tiger.drump();
+			// console.log(tiger);
+			console.log(Object.getPrototypeOf(tiger));
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
